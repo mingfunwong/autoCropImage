@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteCond %{QUERY_STRING} ^([0-9]+)x([0-9]+)(?:m([1-5]))?$
+RewriteRule ^.*\.(gif|jpg|png)$ autoImageCrop/index.php [L,QSA]
