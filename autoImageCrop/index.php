@@ -40,11 +40,15 @@ $new = sprintf(IMAGECROPDIR, $width, $height, $mode, $versions, dirname($path), 
 /* 存在源文件 */
 if (file_exists($old))
 {
+    /* 不存指定规格文件夹 */
+    if (!file_exists(dirname($new)))
+    {
+        mk_dir(dirname($new));
+    }
     /* 不存指定规格文件 */
     if (!file_exists($new))
     {
         /* 生成并输出图片 */
-        mk_dir(dirname($new));
         require ROOT . '/ImageCrop.php';
         make_crop_thumb($old, $new, $width, $height, $mode); 
     }
