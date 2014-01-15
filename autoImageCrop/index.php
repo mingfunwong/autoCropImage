@@ -1,6 +1,6 @@
 <?php
 /**
- * autoImageCrop 自动图片缩放
+ * autoImageCrop 自动缩放图片
  * 
  * 使用说明：
  * http://localhost/images/pic.png?50x100   缩放成宽50像素，高100像素的缩略图，默认缩放模式 3
