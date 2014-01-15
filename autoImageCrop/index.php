@@ -50,7 +50,7 @@ if (file_exists($old))
     {
         /* 生成并输出图片 */
         require ROOT . '/ImageCrop.php';
-        make_crop_thumb($old, $new, $width, $height, $mode); 
+        make_crop_thumb($old, $new, $width, $height, $mode);
     }
     file_exists($new) && show_pic($new);
     exit();
@@ -63,11 +63,12 @@ show_404();
  */
 function make_crop_thumb($src, $dst, $width, $height, $mode)
 {
-        $ic = new ImageCrop($src, $dst);
-        $ic->Crop($width , $height , $mode);
-        $ic->OutImage();
-        $ic->SaveImage();
-        $ic->destory();
+    $ic = new ImageCrop($src, $dst);
+    $ic->Crop($width , $height , $mode);
+    $ic->OutImage();
+    $ic->SaveImage();
+    $ic->destory();
+    exit();
 }
 /**
  * 设置头信息
