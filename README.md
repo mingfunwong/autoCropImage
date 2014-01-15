@@ -4,6 +4,7 @@ autoImageCrop 自动缩放图片
 http://localhost/images/pic.png?50x100   缩放成宽50像素，高100像素的缩略图，默认缩放模式 3
 http://localhost/images/pic.png?50x100m2   裁剪成宽50像素，高100像素的缩略图，指定缩放模式 2
 http://localhost/images/pic.png?50x100m2&20140110   裁剪成宽50像素，高100像素的缩略图，后面字符串可用于更新版本，清除浏览器缓存
+http://localhost/images/pic.png?50x100&20140110   缩放成宽50像素，高100像素的缩略图，默认缩放模式 3，后面字符串可用于更新版本，清除浏览器缓存
 
 ## 缩放模式说明
 
