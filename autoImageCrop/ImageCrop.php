@@ -118,7 +118,7 @@ class ImageCrop {
     }
 
     function SaveAlpha($fileName='') {
-        $this->dst_file=$fileName ? $fileName . '.png' : $this->dst_file .'.png';
+        $this->dst_file=$fileName ? $fileName : $this->dst_file;
         if($this->dImage && is_resource($this->dImage)){
             @imagesavealpha($this->dImage, true);
             @imagepng($this->dImage,$this->dst_file);
@@ -245,6 +245,12 @@ class ImageCrop {
                     $tmp_w = (int)($this->src_width * $ratio);
                     $tmp_h = (int)($this->src_height * $ratio);
                     $tmp_img=@imagecreatetruecolor($tmp_w ,$tmp_h);
+                    // PNG 黑色背景问题
+                    if ($this->src_type === IMAGETYPE_PNG)
+                    {
+                        @imagealphablending($tmp_img,false);
+                        @imagesavealpha($tmp_img,true);
+                    }
                     @imagecopyresampled($tmp_img,$this->sImage,0,0,0,0,$tmp_w,$tmp_h,$this->src_width,$this->src_height);
                     $dst_x = (int)(abs($tmp_w -$dst_width )/2) ;
                     $dst_y = (int)(abs($tmp_h -$dst_height)/2) ;

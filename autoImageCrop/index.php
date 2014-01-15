@@ -65,8 +65,16 @@ function make_crop_thumb($src, $dst, $width, $height, $mode)
 {
     $ic = new ImageCrop($src, $dst);
     $ic->Crop($width , $height , $mode);
-    $ic->OutImage();
-    $ic->SaveImage();
+    list($width, $height, $type) = getimagesize($src);
+    if ($type === IMAGETYPE_PNG)
+    {
+        $ic->OutAlpha();
+        $ic->SaveAlpha();
+    } else {
+        $ic->OutImage();
+        $ic->SaveImage();
+    }
+    
     $ic->destory();
     exit();
 }
@@ -118,11 +126,7 @@ function width_height_mode_versions()
 function show_pic($file)
 {
     $info = getimagesize($file);
-    $fs = filesize($file);
-    // 发送内容信息
-    header("Content-Type:{$info['mime']}\n");
-    header("Content-Length:{$fs}\n");
-    // 发送文件
+    header("Content-Type: {$info['mime']}");
     readfile($file);
     exit();
 }
