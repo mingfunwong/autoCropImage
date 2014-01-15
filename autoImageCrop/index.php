@@ -40,12 +40,12 @@ if (file_exists($old))
     /* 不存指定规格文件 */
     if (!file_exists($new))
     {
+        /* 生成并输出图片 */
         mk_dir(dirname($new));
+        require ROOT . '/ImageCrop.php';
+        make_crop_thumb($old, $new, $width, $height, $mode); 
     }
-    
-    require ROOT . '/ImageCrop.php';
-    /* 生成并输出图片 */
-    make_crop_thumb($old, $new, $width, $height, $mode);
+    file_exists($new) && show_pic($new);
     exit();
 }
 /* 其它处理 */
@@ -113,7 +113,7 @@ function show_pic($file)
     $fs = filesize($file);
     // 发送内容信息
     header("Content-Type:{$info['mime']}\n");
-    header("Content-Disposition:inline; filename=\"{$name}\"\n");
+    header("Content-Disposition:inline; filename=\"". basename($file) ."\"\n");
     header("Content-Length:{$fs}\n");
     // 发送文件 
     readfile($file);
