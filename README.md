@@ -40,8 +40,8 @@ Apache mod_rewrite
 
 ## 安装和测试
 1. 将 `autoImageCrop/`、 `images/`、 `.htaccess` 文件放在网站根目录
-2. 存放缩略图目录权限设置为可写入
-3. 使用浏览器访问 `http://localhost/images/pic.jpg`、 `http://localhost/images/pic.jpg_50x100.jpg` 当第二个地址看见缩略图即安装成功
+2. 使用浏览器访问 `http://localhost/images/pic.jpg`、 `http://localhost/images/pic.jpg_50x100.jpg` 当第二个地址看见缩略图即安装成功
+3. 存放缩略图目录权限修改为可写入
 
 ## 配置
 首次使用时建议修改默认配置，文件位于 autoImageCrop/_config.php
@@ -68,4 +68,4 @@ Apache mod_rewrite
 	if ($width > 10000 OR $height > 10000) $autoImageCrop->show_not_found();
 
 ## 相关链接
-autoImageCrop 开源项目 [https://github.com/mingfunwong/zoek](https://github.com/mingfunwong/zoek)
+autoImageCrop 开源项目 [https://github.com/mingfunwong/autoImageCrop](https://github.com/mingfunwong/autoImageCrop)
