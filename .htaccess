@@ -1,5 +1,5 @@
 RewriteEngine On
 
-RewriteRule ^.*(?:gif|jpg|png)(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?(?:.)?(?:gif|jpg|png)$ autoCropImage/autoCropImage.php [L,QSA]
+RewriteRule ^.*(?:gif|jpg|png)(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?(?:.)?(?:gif|jpg|png)?$ autoCropImage/autoCropImage.php [L,QSA]
 RewriteCond %{QUERY_STRING} ^([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([0-9]*))?$
 RewriteRule ^.*\.(gif|jpg|png)$ autoCropImage/autoCropImage.php [L,QSA]
