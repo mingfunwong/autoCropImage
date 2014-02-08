@@ -68,7 +68,7 @@ Apache mod_rewrite
 	define('HEADER_CACHE_TIME', '10 years');
 
 
-为了防止受到攻击者遍历生成大量文件，建议修改认证配置，文件位于 autoCropImage/_auth.php
+为了防止受到攻击者遍历生成大量文件，正式上线时建议修改认证配置，文件位于 autoCropImage/_auth.php
 
 	// 本程序提供断宽高逻辑，防止遍历生成大量文件
 	// 可判断变量： $width $height $mode $versions
