@@ -1,17 +1,17 @@
 <?php
 /**
- * autoImageCrop - 图片自动缩放程序
+ * autoCropImage - 图片自动缩放程序
  * 
- * @link https://github.com/mingfunwong/autoImageCrop
+ * @link https://github.com/mingfunwong/autoCropImage
  * @license http://opensource.org/licenses/MIT
  * @author Mingfun Wong <mingfun.wong.chn@gmail.com>
  */
 
 /* 初始化 */
-$autoImageCrop = new autoImageCrop();
+$autoCropImage = new autoCropImage();
 
 /* 设置头信息 */
-$autoImageCrop->set_header();
+$autoCropImage->set_header();
 
 /* 当前目录 */
 define('ROOT_DIR', dirname(__FILE__));
@@ -20,13 +20,13 @@ define('ROOT_DIR', dirname(__FILE__));
 require ROOT_DIR . '/_config.php';
 
 /* 获取宽高、缩放模式和版本 */
-list($width, $height, $mode, $versions) = $autoImageCrop->width_height_mode_versions();
+list($width, $height, $mode, $versions) = $autoCropImage->width_height_mode_versions();
 
 /* 判断生成逻辑 */
 require ROOT_DIR . '/_auth.php';
 
 /* 获取文件路径 */
-$path = $autoImageCrop->path();
+$path = $autoCropImage->path();
 
 /* 源文件 */
 $old = ROOT_DIR . '/../' . IMAGES_DIR . $path;
@@ -40,32 +40,32 @@ if (file_exists($old))
     /* 不存指定规格文件夹 */
     if (!file_exists(dirname($new)))
     {
-        $autoImageCrop->mk_dir(dirname($new));
+        $autoCropImage->mk_dir(dirname($new));
     }
     /* 不存指定规格文件 */
     if (!file_exists($new))
     {
         /* 生成并输出图片 */
         require ROOT_DIR . '/ImageCrop.php';
-        $autoImageCrop->make_crop_thumb($old, $new, $width, $height, $mode);
+        $autoCropImage->make_crop_thumb($old, $new, $width, $height, $mode);
         exit();
     }
-    file_exists($new) && $autoImageCrop->show_pic($new);
+    file_exists($new) && $autoCropImage->show_pic($new);
     exit();
 }
 /* 其它处理 */
-$autoImageCrop->show_not_found();
+$autoCropImage->show_not_found();
 
 
 
 /**
- * autoImageCrop - 图片自动缩放程序
+ * autoCropImage - 图片自动缩放程序
  * 
- * @link https://github.com/mingfunwong/autoImageCrop
+ * @link https://github.com/mingfunwong/autoCropImage
  * @license http://opensource.org/licenses/MIT
  * @author Mingfun Wong <mingfun.wong.chn@gmail.com>
  */
-class autoImageCrop
+class autoCropImage
 {
     /**
      * 生成并输出图片
@@ -108,7 +108,7 @@ class autoImageCrop
      */
     function path()
     {
-        $path = str_replace(str_replace('autoImageCrop/autoImageCrop.php', '', $this->from($_SERVER, 'SCRIPT_NAME')), '', str_replace('?' . $this->from($_SERVER, 'QUERY_STRING'), '', $this->from($_SERVER, 'REQUEST_URI')));
+        $path = str_replace(str_replace('autoCropImage/autoCropImage.php', '', $this->from($_SERVER, 'SCRIPT_NAME')), '', str_replace('?' . $this->from($_SERVER, 'QUERY_STRING'), '', $this->from($_SERVER, 'REQUEST_URI')));
         return preg_replace('/(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?(?:.)?(?:gif|jpg|png)$/', '', $path);
     }
 

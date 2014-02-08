@@ -1,4 +1,4 @@
-autoImageCrop - 图片自动缩放程序
+autoCropImage - 图片自动缩放程序
 
 将图片自动缩放成指定大小，减少图片体积，从而加快下载速度，降低下载时间和成本。
 
@@ -35,16 +35,16 @@ PHP 5.2+
 Apache mod_rewrite
 
 ## 下载
-- 直接下载： https://github.com/mingfunwong/autoImageCrop/archive/master.zip
-- Git： git clone git://github.com/mingfunwong/autoImageCrop.git
+- 直接下载： https://github.com/mingfunwong/autoCropImage/archive/master.zip
+- Git： git clone git://github.com/mingfunwong/autoCropImage.git
 
 ## 安装和测试
-1. 将 `autoImageCrop/`、 `images/`、 `.htaccess` 文件放在网站根目录
+1. 将 `autoCropImage/`、 `images/`、 `.htaccess` 文件放在网站根目录
 2. 使用浏览器访问 `http://localhost/images/pic.jpg`、 `http://localhost/images/pic.jpg_50x100.jpg` 当第二个地址看见缩略图即安装成功
 3. 存放缩略图目录权限修改为可写入
 
 ## 配置
-首次使用时建议修改默认配置，文件位于 autoImageCrop/_config.php
+首次使用时建议修改默认配置，文件位于 autoCropImage/_config.php
 
 	/* 设置缩放图片目录 */
 	define('THUMB_DIR', ROOT_DIR . '/../thumb/%1$sx%2$s_mode%3$s/%5$s/%6$s'); // %1$s 宽, %2$s 高, %3$s 模式, %4$s 版本, %5$s 目录, %6$s 文件名
@@ -68,13 +68,13 @@ Apache mod_rewrite
 	define('HEADER_CACHE_TIME', '10 years');
 
 
-为了防止受到攻击者遍历生成大量文件，建议修改认证配置，文件位于 autoImageCrop/_auth.php
+为了防止受到攻击者遍历生成大量文件，建议修改认证配置，文件位于 autoCropImage/_auth.php
 
 	// 本程序提供断宽高逻辑，防止遍历生成大量文件
 	// 可判断变量： $width $height $mode $versions
 	
 	// 例子：
-	if ($width > 10000 OR $height > 10000) $autoImageCrop->show_not_found();
+	if ($width > 10000 OR $height > 10000) $autoCropImage->show_not_found();
 
 ## 相关链接
-autoImageCrop 开源项目 [https://github.com/mingfunwong/autoImageCrop](https://github.com/mingfunwong/autoImageCrop)
+autoCropImage 开源项目 [https://github.com/mingfunwong/autoCropImage](https://github.com/mingfunwong/autoCropImage)

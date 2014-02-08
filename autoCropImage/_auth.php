@@ -1,8 +1,8 @@
 <?php
 /**
- * autoImageCrop - 图片自动缩放程序
+ * autoCropImage - 图片自动缩放程序
  * 
- * @link https://github.com/mingfunwong/autoImageCrop
+ * @link https://github.com/mingfunwong/autoCropImage
  * @license http://opensource.org/licenses/MIT
  * @author Mingfun Wong <mingfun.wong.chn@gmail.com>
  */
@@ -11,4 +11,4 @@
 // 可判断变量： $width $height $mode $versions
 
 // 例子：
-if ($width > 10000 OR $height > 10000) $autoImageCrop->show_not_found();
+if ($width > 10000 OR $height > 10000) $autoCropImage->show_not_found();

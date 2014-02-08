@@ -1,8 +1,8 @@
 <?php
 /**
- * autoImageCrop - 图片自动缩放程序
+ * autoCropImage - 图片自动缩放程序
  * 
- * @link https://github.com/mingfunwong/autoImageCrop
+ * @link https://github.com/mingfunwong/autoCropImage
  * @license http://opensource.org/licenses/MIT
  * @author Mingfun Wong <mingfun.wong.chn@gmail.com>
  */
