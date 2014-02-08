@@ -40,8 +40,8 @@ Apache mod_rewrite
 
 ## 安装和测试
 1. 将 `autoCropImage/`、 `images/`、 `.htaccess` 文件放在网站根目录
-2. 使用浏览器访问 `http://localhost/images/pic.jpg`、 `http://localhost/images/pic.jpg_50x100.jpg` 当第二个地址看见缩略图即安装成功
-3. 存放缩略图目录权限修改为可写入
+2. 存放缩略图目录权限修改为可写入
+3. 使用浏览器访问 `http://localhost/images/pic.jpg`、 `http://localhost/images/pic.jpg_50x100.jpg` 当第二个地址看见缩略图即安装成功
 
 ## 配置
 首次使用时建议修改默认配置，文件位于 autoCropImage/_config.php
