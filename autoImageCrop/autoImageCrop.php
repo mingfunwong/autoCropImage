@@ -113,7 +113,7 @@ class autoImageCrop
     function path()
     {
         $path = str_replace(str_replace('autoImageCrop/autoImageCrop.php', '', $this->from($_SERVER, 'SCRIPT_NAME')), '', str_replace('?' . $this->from($_SERVER, 'QUERY_STRING'), '', $this->from($_SERVER, 'REQUEST_URI')));
-        return preg_replace('/(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?.(?:gif|jpg|png)$/', '', $path);
+        return preg_replace('/(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?(?:.)?(?:gif|jpg|png)$/', '', $path);
     }
 
     /**
@@ -123,7 +123,17 @@ class autoImageCrop
     {
         if ($request_uri = $this->from($_SERVER, 'REQUEST_URI'))
         {
-            if (preg_match('/(?:gif|jpg|png)(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?.(?:gif|jpg|png)$/', $request_uri, $match))
+            if (preg_match('/(?:gif|jpg|png)(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?(?:.)?(?:gif|jpg|png)$/', $request_uri, $match))
+            {
+                if ($this->from($match, 1) && $this->from($match, 2))
+                {
+                    return array($match[1], $match[2], $this->from($match, 3, DEFAULT_MODE, TRUE), $this->from($match, 4, DEFAULT_VERSIONS, TRUE));
+                }
+            }
+        }
+        if ($query_string = $this->from($_SERVER, 'QUERY_STRING'))
+        {
+            if (preg_match('/^([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([0-9]*))?$/', $query_string, $match))
             {
                 if ($this->from($match, 1) && $this->from($match, 2))
                 {
