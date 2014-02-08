@@ -2,10 +2,6 @@
 /**
  * autoImageCrop - 图片自动缩放程序
  * 
- * 使用说明：
- * http://localhost/images/pic.png?50x100   缩放成宽50像素，高100像素的缩略图，默认缩放模式 3
- * http://localhost/images/pic.png?50x100&20140110   缩放成 50x100 缩略图，指定缩放模式 2，v字符串可用于更新版本并清除浏览器缓存
- * 
  * @link https://github.com/mingfunwong/autoImageCrop
  * @license http://opensource.org/licenses/MIT
  * @author Mingfun Wong <mingfun.wong.chn@gmail.com>
@@ -18,25 +14,25 @@ $autoImageCrop = new autoImageCrop();
 $autoImageCrop->set_header();
 
 /* 当前目录 */
-define('ROOT', dirname(__FILE__));
+define('ROOT_DIR', dirname(__FILE__));
 
 /* 项目配置 */
-require ROOT . '/_config.php';
+require ROOT_DIR . '/_config.php';
 
 /* 获取宽高、缩放模式和版本 */
 list($width, $height, $mode, $versions) = $autoImageCrop->width_height_mode_versions();
 
 /* 判断生成逻辑 */
-require ROOT . '/_config.php';
+require ROOT_DIR . '/_auth.php';
 
 /* 获取文件路径 */
 $path = $autoImageCrop->path();
 
 /* 源文件 */
-$old = ROOT . '/../' . $path;
+$old = ROOT_DIR . '/../' . IMAGES_DIR . $path;
 
 /* 指定规格文件 */
-$new = sprintf(IMAGECROPDIR, $width, $height, $mode, $versions, dirname($path), basename($path));
+$new = sprintf(THUMB_DIR, $width, $height, $mode, $versions, dirname($path), basename($path));
 
 /* 存在源文件 */
 if (file_exists($old))
@@ -50,7 +46,7 @@ if (file_exists($old))
     if (!file_exists($new))
     {
         /* 生成并输出图片 */
-        require ROOT . '/ImageCrop.php';
+        require ROOT_DIR . '/ImageCrop.php';
         $autoImageCrop->make_crop_thumb($old, $new, $width, $height, $mode);
         exit();
     }

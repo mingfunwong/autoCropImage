@@ -8,7 +8,7 @@
  */
 
 /* 设置缩放图片目录 */
-define('IMAGECROPDIR', ROOT . '/../thumb/%1$sx%2$s_mode%3$s/%5$s/%6$s'); // %1$s 宽, %2$s 高, %3$s 模式, %4$s 版本, %5$s 目录, %6$s 文件名
+define('THUMB_DIR', ROOT_DIR . '/../thumb/%1$sx%2$s_mode%3$s/%5$s/%6$s'); // %1$s 宽, %2$s 高, %3$s 模式, %4$s 版本, %5$s 目录, %6$s 文件名
 
 /* 默认缩放模式
  * mode 1 : 强制裁剪，生成图片严格按照需要，不足放大，超过裁剪，图片始终铺满
@@ -21,6 +21,15 @@ define('DEFAULT_MODE', 3);
 
 /* 默认版本 */
 define('DEFAULT_VERSIONS', 1);
+
+/* 默认图片目录
+ * 例如：
+ * define('IMAGES_DIR', 'images/');
+ * 设置后将可以：
+ * 1. URL 减少使用路径 http://localhost/images/pic.jpg_50x100.jpg > http://localhost/pic.jpg_50x100.jpg
+ * 2. URL 隐藏原大小图片路径
+ */
+define('IMAGES_DIR', '');
 
 /* header 缓存时长 */
 define('HEADER_CACHE_TIME', '10 years');
