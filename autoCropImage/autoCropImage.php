@@ -7,17 +7,17 @@
  * @author Mingfun Wong <mingfun.wong.chn@gmail.com>
  */
 
-/* 初始化 */
-$autoCropImage = new autoCropImage();
-
-/* 设置头信息 */
-$autoCropImage->set_header();
-
 /* 当前目录 */
 define('ROOT_DIR', dirname(__FILE__));
 
 /* 项目配置 */
 require ROOT_DIR . '/_config.php';
+
+/* 初始化 */
+$autoCropImage = new autoCropImage();
+
+/* 设置头信息 */
+$autoCropImage->set_header();
 
 /* 获取宽高、缩放模式和版本 */
 list($width, $height, $mode, $versions) = $autoCropImage->width_height_mode_versions();
