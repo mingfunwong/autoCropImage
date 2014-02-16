@@ -69,8 +69,16 @@ class autoCropImage
 {
     /**
      * 生成并输出图片
+     * 
+     * @access public
+     * @param mixed $src
+     * @param mixed $dst
+     * @param mixed $width
+     * @param mixed $height
+     * @param mixed $mode
+     * @return void
      */
-    function make_crop_thumb($src, $dst, $width, $height, $mode)
+    public function make_crop_thumb($src, $dst, $width, $height, $mode)
     {
         $ic = new ImageCrop($src, $dst);
         $ic->Crop($width , $height , $mode);
@@ -89,8 +97,11 @@ class autoCropImage
     
     /**
      * 设置头信息
+     * 
+     * @access public
+     * @return void
      */
-    function set_header()
+    public function set_header()
     {
         header('Expires: ' . date('D, j M Y H:i:s', strtotime('now + ' . HEADER_CACHE_TIME)) .' GMT');
         $etag = md5(serialize($this->from($_SERVER, 'QUERY_STRING')));
@@ -105,8 +116,11 @@ class autoCropImage
 
     /**
      * 获取请求路径
+     * 
+     * @access public
+     * @return string
      */
-    function path()
+    public function path()
     {
         $path = str_replace(str_replace('autoCropImage/autoCropImage.php', '', $this->from($_SERVER, 'SCRIPT_NAME')), '', str_replace('?' . $this->from($_SERVER, 'QUERY_STRING'), '', $this->from($_SERVER, 'REQUEST_URI')));
         return preg_replace('/(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?(?:.)?(?:gif|jpg|png)?$/', '', $path);
@@ -114,8 +128,11 @@ class autoCropImage
 
     /**
      * 获取宽高、缩放模式和版本
+     * 
+     * @access public
+     * @return array($width, $height, $mode, $versions)
      */
-    function width_height_mode_versions()
+    public function width_height_mode_versions()
     {
         if ($request_uri = $this->from($_SERVER, 'REQUEST_URI'))
         {
@@ -142,8 +159,12 @@ class autoCropImage
 
     /**
      * 输出图片
+     * 
+     * @access public
+     * @param mixed $file
+     * @return void
      */
-    function show_pic($file)
+    public function show_pic($file)
     {
         $info = getimagesize($file);
         header("Content-Type: {$info['mime']}");
@@ -153,8 +174,11 @@ class autoCropImage
 
     /**
      * 404 Not Found 输出
+     * 
+     * @access public
+     * @return void
      */
-    function show_not_found()
+    public function show_not_found()
     {
         header($this->from($_SERVER, 'SERVER_PROTOCOL') . ' 404 Not Found');
         exit;
@@ -162,8 +186,13 @@ class autoCropImage
 
     /**
      * 递归创建目录
+     * 
+     * @access public
+     * @param mixed $dir
+     * @param int $mode
+     * @return bool
      */
-    function mk_dir($dir, $mode = 0755) 
+    public function mk_dir($dir, $mode = 0755) 
     { 
         if (is_dir($dir) || @mkdir($dir, $mode)) return true; 
         if (!$this->mk_dir(dirname($dir), $mode)) return false; 
@@ -173,14 +202,14 @@ class autoCropImage
     /**
      * 获得数组指定键的值
      * 
-     * @access global
+     * @access public
      * @param array $array
      * @param string $key
      * @param mixed $default
      * @param bool $check_empty
      * @return mixed
      */
-    function from($array, $key, $default = FALSE, $check_empty = FALSE)
+    public function from($array, $key, $default = FALSE, $check_empty = FALSE)
     {
         return (isset($array[$key]) === FALSE OR ($check_empty === TRUE && empty($array[$key])) === TRUE) ? $default : $array[$key];
     }
