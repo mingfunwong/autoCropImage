@@ -122,10 +122,27 @@ class autoCropImage
      */
     public function path()
     {
-        $path = str_replace(str_replace('autoCropImage/autoCropImage.php', '', $this->from($_SERVER, 'SCRIPT_NAME')), '', str_replace('?' . $this->from($_SERVER, 'QUERY_STRING'), '', $this->from($_SERVER, 'REQUEST_URI')));
+        $path = $this->_str_replace_once($this->_str_replace_once('autoCropImage/autoCropImage.php', '', $this->from($_SERVER, 'SCRIPT_NAME')), '', $this->_str_replace_once('?' . $this->from($_SERVER, 'QUERY_STRING'), '', $this->from($_SERVER, 'REQUEST_URI')));
         return preg_replace('/(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([^.]*))?(?:.)?(?:gif|jpg|png)?$/', '', $path);
     }
-
+    
+    /**
+     * 子字符串替换一次
+     * 
+     * @access public
+     * @param string $needle
+     * @param string $replace
+     * @param string $haystack
+     * @return string
+     */
+    public function _str_replace_once($needle, $replace, $haystack) {
+        $pos = strpos($haystack, $needle);
+        if ($pos === false) {
+            return $haystack;
+        }
+        return substr_replace($haystack, $replace, $pos, strlen($needle));
+    }
+    
     /**
      * 获取宽高、缩放模式和版本
      * 
