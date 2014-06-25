@@ -180,6 +180,7 @@ class ImageCrop {
                     $src_y = abs(($this->src_height-$tmp_h)/2) ;
                     @imagecopy($tmp_img, $this->sImage, 0,0,$src_x,$src_y,$tmp_w,$tmp_h);
                     @imagecopyresampled($this->dImage,$tmp_img,0,0,0,0,$dst_width,$dst_height,$tmp_w,$tmp_h);
+                    @imageinterlace($this->dImage, 1);
                     @imagedestroy($tmp_img);
                 }else {
                     $ratio = $ratio_w < $ratio_h ? $ratio_h : $ratio_w;
@@ -187,6 +188,7 @@ class ImageCrop {
                     $tmp_h = (int)($this->src_height * $ratio);
                     $tmp_img=@imagecreatetruecolor($tmp_w ,$tmp_h);
                     @imagecopyresampled($tmp_img,$this->sImage,0,0,0,0,$tmp_w,$tmp_h,$this->src_width,$this->src_height);
+                    @imageinterlace($tmp_img, 1);
                     $src_x = abs($tmp_w - $dst_width) / 2 ;
                     $src_y = abs($tmp_h - $dst_height) / 2 ;
                     @imagecopy($this->dImage, $tmp_img, 0,0,$src_x,$src_y,$dst_width,$dst_height);
@@ -205,6 +207,7 @@ class ImageCrop {
                     $src_y = (int) ($this->src_height-$tmp_h)/2 ;
                     @imagecopy($tmp_img, $this->sImage, 0,0,$src_x,$src_y,$tmp_w,$tmp_h);
                     @imagecopyresampled($this->dImage,$tmp_img,0,0,0,0,$dst_width,$dst_height,$tmp_w,$tmp_h);
+                    @imageinterlace($this->dImage, 1);
                     @imagedestroy($tmp_img);
                 }elseif($ratio_w > 1 && $ratio_h > 1) {
                     $dst_x = (int) abs($dst_width - $this->src_width) / 2 ;
@@ -252,6 +255,7 @@ class ImageCrop {
                         @imagesavealpha($tmp_img,true);
                     }
                     @imagecopyresampled($tmp_img,$this->sImage,0,0,0,0,$tmp_w,$tmp_h,$this->src_width,$this->src_height);
+                    @imageinterlace($tmp_img, 1);
                     $dst_x = (int)(abs($tmp_w -$dst_width )/2) ;
                     $dst_y = (int)(abs($tmp_h -$dst_height)/2) ;
                     @imagecopy($this->dImage, $tmp_img, $dst_x,$dst_y,0,0,$tmp_w,$tmp_h);
@@ -267,6 +271,7 @@ class ImageCrop {
                     $tmp_h = (int)($this->src_height * $ratio);
                     $this->dImage = @imagecreatetruecolor($tmp_w ,$tmp_h);
                     @imagecopyresampled($this->dImage,$this->sImage,0,0,0,0,$tmp_w,$tmp_h,$this->src_width,$this->src_height);
+                    @imageinterlace($this->dImage, 1);
                 }
                 break;
              case 5: // if dst > src , crop , if (dst < src) crop fixed ratio
@@ -281,6 +286,7 @@ class ImageCrop {
                         $this->dImage = imagecreatetruecolor($dst_width ,$dst_height);
                         imagecopy($tmp_img, $this->sImage, 0,0,$src_x,$src_y,$tmp_w,$tmp_h);
                         imagecopyresampled($this->dImage,$tmp_img,0,0,0,0,$dst_width,$dst_height,$tmp_w,$tmp_h);
+                        @imageinterlace($this->dImage, 1);
                         imagedestroy($tmp_img);
                     }elseif($ratio_w > 1 && $ratio_h > 1){
                         $this->dImage = @imagecreatetruecolor($tmp_w ,$tmp_h);
