@@ -198,7 +198,7 @@ class autoCropImage
     public function show_not_found()
     {
         header($this->from($_SERVER, 'SERVER_PROTOCOL') . ' 404 Not Found');
-        $img = imagecreate(100, 10);
+        $img = imagecreate(1, 1);
         imagecolorallocate($img, 0xee, 0xee, 0xee);
         header('Content-Type: image/gif');
         imagegif($img);
