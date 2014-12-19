@@ -49,8 +49,7 @@ if (file_exists($old))
         require ROOT_DIR . '/ImageCrop.php';
         $autoCropImage->make_crop_thumb($old, $new, $width, $height, $mode);
     }
-    file_exists($new) && $autoCropImage->show_pic($new);
-    exit();
+    file_exists($new) && $autoCropImage->show_pic($new) && exit();
 }
 /* 其它处理 */
 $autoCropImage->show_not_found();
@@ -105,7 +104,7 @@ class autoCropImage
         if ($this->from($_SERVER, 'HTTP_IF_NONE_MATCH') === $etag)
         {
             header('Etag:' . $etag, true, 304);
-            //exit;
+            exit;
         } else {
             header('Etag:' . $etag);
         }
