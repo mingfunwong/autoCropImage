@@ -48,7 +48,6 @@ if (file_exists($old))
         /* 生成并输出图片 */
         require ROOT_DIR . '/ImageCrop.php';
         $autoCropImage->make_crop_thumb($old, $new, $width, $height, $mode);
-        exit();
     }
     file_exists($new) && $autoCropImage->show_pic($new);
     exit();
@@ -85,10 +84,8 @@ class autoCropImage
         list($width, $height, $type) = getimagesize($src);
         if ($type === IMAGETYPE_PNG)
         {
-            $ic->OutAlpha();
             $ic->SaveAlpha();
         } else {
-            $ic->OutImage();
             $ic->SaveImage();
         }
         
@@ -108,7 +105,7 @@ class autoCropImage
         if ($this->from($_SERVER, 'HTTP_IF_NONE_MATCH') === $etag)
         {
             header('Etag:' . $etag, true, 304);
-            exit;
+            //exit;
         } else {
             header('Etag:' . $etag);
         }
