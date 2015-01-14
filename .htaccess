@@ -1,7 +1,7 @@
 RewriteEngine On
 
 # autoCropImage 程序 URI 模式匹配规则
-RewriteRule ^.*(?:gif|jpg|png|GIF|JPG|PNG)(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([A-Za-z0-9_]*))?(?:.)?(?:gif|jpg|png|GIF|JPG|PNG)?$ autoCropImage/autoCropImage.php [L,QSA]
+RewriteRule ^.*(?:gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG)(?:_)([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([A-Za-z0-9_]*))?(?:.)?(?:gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG)?$ autoCropImage/autoCropImage.php [L,QSA]
 # autoCropImage 程序 QUERY 模式匹配规则
 RewriteCond %{QUERY_STRING} ^([0-9]+)x([0-9]+)(?:m([1-5]))?(?:v([A-Za-z0-9_]*))?$
-RewriteRule ^.*\.(gif|jpg|png|GIF|JPG|PNG)$ autoCropImage/autoCropImage.php [L,QSA]
+RewriteRule ^.*\.(gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG)$ autoCropImage/autoCropImage.php [L,QSA]
