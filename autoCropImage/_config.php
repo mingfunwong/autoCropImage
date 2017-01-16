@@ -17,7 +17,7 @@ define('THUMB_DIR', ROOT_DIR . '/../thumb/%1$sx%2$s_mode%3$s/%5$s/%6$s'); // %1$
  * mode 4 : 只缩放，不裁剪，保留全部图片信息，此时的参数只是限制了生成的图片的最大宽高，不产生补白
  * mode 5 : 生成的图比例严格按照需要的比例，宽和高不超过给定的参数。
  */
-define('DEFAULT_MODE', 3);
+define('DEFAULT_MODE', 1);
 
 /* 默认版本 */
 define('DEFAULT_VERSIONS', 1);

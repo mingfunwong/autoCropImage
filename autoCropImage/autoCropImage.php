@@ -7,6 +7,8 @@
  * @author Mingfun Wong <mingfun.wong.chn@gmail.com>
  */
 
+date_default_timezone_set("Asia/Shanghai");
+
 /* 当前目录 */
 define('ROOT_DIR', dirname(__FILE__));
 
